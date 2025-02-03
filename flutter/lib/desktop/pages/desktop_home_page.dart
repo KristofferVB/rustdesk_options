@@ -71,9 +71,26 @@ class _DesktopHomePageState extends State<DesktopHomePage>
   }
 
   Widget _buildBlock({required Widget child}) {
-    return buildRemoteBlock(
-        block: _block, mask: true, use: canBeBlocked, child: child);
-  }
+  return buildRemoteBlock(
+      block: _block, mask: true, use: canBeBlocked, child: Column(
+        children: [
+          // Legg til knappen her
+          ElevatedButton(
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Dette var ikke her før'),
+                ),
+              );
+            },
+            child: Text('Trykk her'),
+          ),
+          // Resten av innholdet i _buildBlock
+          Expanded(child: child),
+        ],
+      ));
+}
+  
 
   Widget buildLeftPane(BuildContext context) {
     final isIncomingOnly = bind.isIncomingOnly();
