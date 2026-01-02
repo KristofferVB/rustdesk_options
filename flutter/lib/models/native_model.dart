@@ -120,7 +120,7 @@ class PlatformFFI {
   }
 
 
-    void startGrabLoop() {
+ void startGrabLoop() {
     if (Platform.isWindows) {
       NativeBindings.startGrabLoop();
     }
